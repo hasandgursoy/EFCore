@@ -13,6 +13,30 @@ namespace EFCore.CodeFirst.DAL
         
         public DbSet<Product> Products { get; set; }
 
+
+        public override int SaveChanges()
+        {
+            ChangeTracker.Entries().ToList().ForEach(e =>
+            {
+                
+                
+
+                if (e.Entity is Product p)
+                {
+
+                    if (e.State == EntityState.Added)
+                    {
+                        p.CreatedDate = DateTime.UtcNow;
+
+                    }
+
+                }
+            });
+
+            return base.SaveChanges();
+        }
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Console uygulması oldugu için bunu burda bir kere build etmemiz lazım.
