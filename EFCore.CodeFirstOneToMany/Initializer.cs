@@ -5,8 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EFCore.CodeFirst
-
+namespace EFCore.CodeFirstRelations
 {
     public class Initializer
     {

@@ -5,7 +5,7 @@ using EFCore.CodeFirst.DAL;
 using Microsoft.EntityFrameworkCore;
 
 Initializer.Build();
-
+// EF Core'un harika bir document yapısı var sitesine kesinlikle sürekli girilip bakılması gerekir.
 using (var _context = new AppDbContext())
 {
 
