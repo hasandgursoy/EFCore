@@ -9,20 +9,36 @@ Initializer.Build();
 using (var _context = new AppDbContext())
 {
 
-    await _context.Products.AddAsync(new() { Name = "Barak12cal", Price = 1300, Stock = 123, Barcode = "123123123" });
-    await _context.Products.AddAsync(new() { Name = "Barak12cal", Price = 1300, Stock = 123, Barcode = "123123123" });
-    await _context.Products.AddAsync(new() { Name = "Barak12cal", Price = 1300, Stock = 123, Barcode = "123123123" });
+    
+    
+    
+    
+    
+    // --- DbSet<> Methodları ---//
+    // FirstOrDefault da olay ilk ini alır yoksa null döner default olarak null dır.
+    //var product =  _context.Products.FirstOrDefault(x => x.Id == 100, new Product() { Id = 1, Name = "Silgi" }) ;
+    //var product1 = await  _context.Products.SingleAsync(x => x.Stock > 100);
+    //var product2 = await _context.Products.Where(x => x.Id > 10 || x.Price ==100).ToListAsync();
+    //var product3 = await _context.Products.FindAsync(10); // direkt olarak primary key içinde arar.
+    //var product4 = _context.Products.AsNoTracking().FirstAsync(x => x.Name.Length > 10); // Veriyi takip etme.
 
-    _context.SaveChanges();
-    // ChangeTracker mekanizması veri tabanındaki datalara 
 
 
-    await _context.Products.ForEachAsync(p =>
-    {
-         Console.WriteLine($"{p.Name} - {p.CreatedDate}");
-    });
+
+    //await _context.Products.AddAsync(new() { Name = "Barak12cal", Price = 1300, Stock = 123, Barcode = "123123123" });
+    //await _context.Products.AddAsync(new() { Name = "Barak12cal", Price = 1300, Stock = 123, Barcode = "123123123" });
+    //await _context.Products.AddAsync(new() { Name = "Barak12cal", Price = 1300, Stock = 123, Barcode = "123123123" });
+
+    //_context.SaveChanges();
+    //// ChangeTracker mekanizması veri tabanından önce ve sonraki durumları takip eder.
 
 
+    //await _context.Products.ForEachAsync(p =>
+    //{
+    //     Console.WriteLine($"{p.Name} - {p.CreatedDate}");
+    //});
+
+    // _context.Add ile _context.Products.Add arasında hiç bir fark yoktur.
     // Birden fazla veri tabanımız varken bunları ayırt etmek için contextId'yi kullanıyoruz.
     Console.WriteLine($" Context ID : {_context.ContextId}");
 
