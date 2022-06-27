@@ -2,4 +2,4 @@
 
 using EFCore.CodeFirstRelations;
 
-Initializer.Build();
+Initializer.Build(); 
