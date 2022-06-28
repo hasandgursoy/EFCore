@@ -41,10 +41,21 @@ namespace EFCore.CodeFirstRelations.DAL
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
+        {   
+            // Loglama işleminde Loglevelda neyi verirsek ordan yukarısını loglar.
+           
+
+            // Trace
+            // Debug
+            // Information
+            // Warning
+            // Error
+            // Critical
+
+            // Efcore proxies paketini yükleyip hem lazy loading yapacağız hemde loglama işlemi yapacağız.
             // Console uygulması oldugu için bunu burda bir kere build etmemiz lazım.
             Initializer.Build();
-            optionsBuilder.UseNpgsql(Initializer.Configuration.GetConnectionString("PostgreSQL"));
+            optionsBuilder.LogTo(Console.WriteLine,Microsoft.Extensions.Logging.LogLevel.Information).UseLazyLoadingProxies().UseNpgsql(Initializer.Configuration.GetConnectionString("PostgreSQL"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

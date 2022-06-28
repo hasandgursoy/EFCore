@@ -35,5 +35,11 @@ using (var _context = new AppDbContext())
     //    _context.Entry(product).Reference(x => x.ProductFeature).Load();
     //}
 
+    // Lazzy Loading 
+    // Lazzy Loading yapabilmek için kesinlikle Entitylerimizin proplarını virtual yapmamız gerekiyor.
+    // Lazzy loading n+1 problemine sahiptir. Çünkü for döngüsüyle vs her bir item'ı dönersek her seferinde sorgu atar ve yorar bizi.
 
+    var category = await _context.Categories.FirstAsync();
+
+    var products = category.Products;
 }
